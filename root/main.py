@@ -1,38 +1,27 @@
 import time
 import random
-
 reaction_times = []
-
-print("Reaction Time Game!")
-print("When you see GO!, press Enter as quickly as possible.")
+print("This game uses time as a factor. it is similar to ones you would find online."
+      "the word NOW is going to appear, and you have to press enter as soon as possible.")
 print()
-
-for attempt in range(1, 6):
-    print(f"Attempt {attempt}/5")
-    print("Get ready...")
-
-    # Wait a random time between 2 and 5 seconds
-    wait_time = random.uniform(2, 5)
+for attempt in range(1, 10):
+    print(f"Try {attempt}/10")
+    print("Not yet")
+    wait_time = random.uniform(1, 10)
     time.sleep(wait_time)
-
-    # Record start time when GO! appears
-    print("GO!")
+    print("NOW")
     start_time = time.monotonic()
-
-    # Wait for player response
     input()
-
-    # Record end time when Enter is pressed
     end_time = time.monotonic()
-
-    # Calculate reaction time
     reaction_time = end_time - start_time
     reaction_times.append(reaction_time)
-
-    print(f"Reaction Time: {reaction_time:.3f} seconds\n")
-
-# Find and display fastest reaction time
+    print(f"your speed was: {reaction_time:.3f} seconds\n")
 fastest_time = min(reaction_times)
-
-print("Game Over!")
-print(f"Fastest Reaction Time: {fastest_time:.3f} seconds")
+if fastest_time > 1 and fastest_time < 4:
+    print("good job!")
+if fastest_time > 4:
+    print("did you go afk the whole time?")
+if fastest_time > 1:
+    print("cheater!!!")
+print("Congrats! the game is finished")
+print(f"Your fastest speed is: {fastest_time:.3f} seconds")
